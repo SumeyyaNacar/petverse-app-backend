@@ -3,7 +3,7 @@ package com.petverse.service.helper;
 
 import com.petverse.entity.concretes.user.User;
 import com.petverse.exception.BadRequestException;
-import com.petverse.exception.ResourceNotFoundException;
+import com.petverse.exception.NoEntityFoundException;
 import com.petverse.payload.messages.ErrorMessages;
 import com.petverse.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class MethodHelper {
     // !!! isUserExist
     public User findUserById(UUID id) {//varsa user gelecek, yoksa exception
         return userRepository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException(String.format(ErrorMessages.NOT_FOUND_USER_MESSAGE,
+                new NoEntityFoundException(String.format(ErrorMessages.NOT_FOUND_USER_MESSAGE,
                         id)));
     }
 
@@ -34,7 +34,7 @@ public class MethodHelper {
     public User findUserByEmail(String email){
         User user = userRepository.findByEmailEquals(email);//userin kendisini db den cektik
         if (user.getId() == null){
-            throw new ResourceNotFoundException(ErrorMessages.NOT_FOUND_USER_MESSAGE);
+            throw new NoEntityFoundException(ErrorMessages.NOT_FOUND_USER_MESSAGE);
         }
         return user;
 

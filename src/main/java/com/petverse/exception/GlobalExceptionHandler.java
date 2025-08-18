@@ -37,9 +37,9 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, "Bad Request", ex.getMessage());
     }
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ResponseError> handleResourceNotFoundException(ResourceNotFoundException ex) {
-        return buildErrorResponse(HttpStatus.NOT_FOUND, "Not Found", ex.getMessage());
+    @ExceptionHandler(NoEntityFoundException.class)
+    public ResponseEntity<ResponseError> handleResourceNotFoundException(NoEntityFoundException ex) {
+        return buildErrorResponse(HttpStatus.NOT_FOUND, "Entity Not Found", ex.getMessage());
     }
 
     @ExceptionHandler(AccessDeniedException.class)

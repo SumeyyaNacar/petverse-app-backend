@@ -17,4 +17,10 @@ public class SuccessMessages {
     public static final String USER_SAVED_MESSAGE = "User saved successfully";
     public static final String USER_DELETED_SUCCESSFULLY = "User deleted successfully";
 
+    public static final String PET_FOUND_MESSAGE = "Pet found successfully";
+    public static final String PET_SAVED_MESSAGE = "Pet created successfully";
+    public static final String PET_PURCHASED_MESSAGE = "Pet purchased successfully";
+    public static final String PET_DELETED_MESSAGE = "Pet deleted successfully";
+    public static final String PET_INACTIVATED_MESSAGE = "Pet  inactivated successfully";
+    public static final String PHOTO_ADDED_MESSAGE = "Photo added successfully";
 }

@@ -24,4 +24,10 @@ public class ErrorMessages {
     public static final String USER_ALREADY_DELETED_MESSAGE = "User already has been deleted";
 
 
+    public static final String PET_NOT_FOUND_MESSAGE = "Pet with id %s not found";
+    public static final String MICROCHIP_ALREADY_EXIST_MESSAGE = "Microchip number %s already exists.";
+    public static final String OWNER_ALREADY_HAS_PET_MESSAGE = "Owner already has a pet with this name: %s";
+    public static final String PET_NOT_AVAILABLE_MESSAGE = "Pet is not available for sale";
+    public static final String PET_SOLD_NO_DELETE_MESSAGE = "Sold pets cannot be deleted";
+    public static final String MAX_PHOTO_LIMIT_MESSAGE = "Max photo limit full";
 }

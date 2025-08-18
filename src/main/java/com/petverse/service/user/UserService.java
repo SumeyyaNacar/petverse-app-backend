@@ -3,12 +3,11 @@ package com.petverse.service.user;
 import com.petverse.entity.concretes.user.User;
 import com.petverse.entity.enums.RoleType;
 import com.petverse.exception.BadRequestException;
-import com.petverse.exception.ResourceNotFoundException;
+import com.petverse.exception.NoEntityFoundException;
 import com.petverse.payload.ResponseMessage;
 import com.petverse.payload.mappers.user.UserMapper;
 import com.petverse.payload.messages.ErrorMessages;
 import com.petverse.payload.messages.SuccessMessages;
-import com.petverse.payload.request.abstracts.AbstractUserRequest;
 import com.petverse.payload.request.user.UserRequest;
 import com.petverse.payload.request.user.UserRequestWithoutPassword;
 import com.petverse.payload.response.user.UserResponse;
@@ -51,7 +50,7 @@ public class UserService {
         User user = userRepository.findByEmailEquals(principal.getName());
 
         if (user == null) {
-            throw new ResourceNotFoundException(ErrorMessages.NOT_FOUND_USER_MESSAGE);
+            throw new NoEntityFoundException(ErrorMessages.NOT_FOUND_USER_MESSAGE);
         }
         return ResponseMessage.<UserResponse>builder()
                 .message(SuccessMessages.USER_FOUND_MESSAGE)
@@ -178,7 +177,7 @@ public class UserService {
         User user = userRepository.findByEmailEquals(requesterEmail);
 
         if (user == null) {
-            throw new ResourceNotFoundException(
+            throw new NoEntityFoundException(
                     String.format(ErrorMessages.USER_NOT_FOUND_EMAIL_MESSAGE, requesterEmail)
             );
         }
@@ -207,7 +206,7 @@ public class UserService {
         } else if (roleType.equals(RoleType.OWNER.getName())) {
             user.setRoleType(RoleType.OWNER);
         } else {
-            throw new ResourceNotFoundException(
+            throw new NoEntityFoundException(
                     String.format(ErrorMessages.USER_ROLE_NOT_FOUND, roleType)
             );
         }

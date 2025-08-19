@@ -68,7 +68,7 @@ public class UserController {
     // ---------- PATCH ----------
     // !!! Kullanicinin kendisini update etmesini saglayan method
     @PatchMapping
-    @PreAuthorize("hasAnyAuthority('ADMIN','PARENT', 'STUDENT')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','OWNER')")
     public ResponseMessage<String> updateCurrentUserPartially(
             @RequestBody UserRequestWithoutPassword userRequestWithoutPassword) {
         return userService.updateUserForUsers(userRequestWithoutPassword);
